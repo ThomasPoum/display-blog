@@ -1,0 +1,90 @@
+{
+  "kind": "collectionType",
+  "collectionName": "articles",
+  "info": {
+    "singularName": "article",
+    "pluralName": "articles",
+    "displayName": "Article",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "Article_content": {
+      "type": "richtext",
+      "required": true
+    },
+    "Posted_on": {
+      "type": "date",
+      "required": true
+    },
+    "illustration": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "Title"
+    },
+    "Seo": {
+      "displayName": "Seo",
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "keywords": {
+      "type": "string"
+    },
+    "preventIndexing": {
+      "type": "boolean",
+      "default": false
+    },
+    "RelatedArticles": {
+      "displayName": "RealtedArticles",
+      "type": "component",
+      "repeatable": false,
+      "component": "articles.realted-articles"
+    },
+    "baseline": {
+      "type": "string",
+      "required": true
+    },
+    "main_subject": {
+      "type": "enumeration",
+      "enum": [
+        "Scolaire",
+        "DSP",
+        "Marché",
+        "Lignes régulières",
+        "Analyse",
+        "Consulting",
+        "Focus"
+      ],
+      "required": true
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::author.author",
+      "inversedBy": "articles"
+    },
+    "TYPE": {
+      "type": "enumeration",
+      "enum": [
+        "Display",
+        "Tech"
+      ],
+      "required": true
+    }
+  }
+}
